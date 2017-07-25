@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/MarketPrice.dir/MarketPrice.cpp.o  -o MarketPrice -rdynamic 

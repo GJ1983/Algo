@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gopal-joshi/Programs/C++/MarketPrice.cpp
+iostream
+-
+map
+-
+set
+-
+iterator
+-
+string
+-
+MarketPrice.h
+/home/gopal-joshi/Programs/C++/MarketPrice.h
+
+/home/gopal-joshi/Programs/C++/MarketPrice.h
+iostream
+-
+map
+-
+set
+-
+iterator
+-
+string
+-
+

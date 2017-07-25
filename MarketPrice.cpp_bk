@@ -1,0 +1,132 @@
+#include<iostream>
+#include<map>
+#include<set>
+#include<iterator>
+#include<string>
+
+struct bidorder
+{
+public:
+	int price;
+	std::string sbidorder;
+};
+
+struct comparebid
+{
+	bool operator()(const bidorder &lhs, const bidorder &rhs) const
+	{
+		return lhs.price < rhs.price ;
+	}
+};
+
+struct compareorder
+{
+	bool operator()(const bidorder &lhs, const bidorder &rhs) const
+	{
+		return lhs.price > rhs.price;
+	}
+};
+
+class OrderBook
+{
+private:
+//protected:
+	std::multiset<bidorder, compareorder > m_vOrders;
+	std::multiset<bidorder, comparebid > m_vBids;
+	std::map<std::string, int> m_mAllOrders;
+public:
+	bool AddBids(bidorder bid);
+	bool AddOrder(bidorder order);
+};
+
+bool OrderBook::AddBids(bidorder bid)
+{
+	std::map<std::string, int>::iterator ite = m_mAllOrders.find(bid.sbidorder);
+	if(ite != m_mAllOrders.end() )
+	{
+		m_mAllOrders[bid.sbidorder] = bid.price;
+		m_vBids.insert(bid);
+		return true;
+	}
+	return false;
+}
+
+bool OrderBook::AddOrder(bidorder bid)
+{
+	std::map<std::string, int>::iterator ite = m_mAllOrders.find(bid.sbidorder);
+	if(ite != m_mAllOrders.end() )
+	{
+		m_mAllOrders[bid.sbidorder] = bid.price;
+		m_vOrders.insert(bid);
+		return true;
+	}
+	return false;
+}
+
+class MarketPrices
+{
+public:
+       /************************************************************************************************
+        *** This function is called to enter new bid or offer in the system,
+        *** The order has to be stored in the correct position of the orderbook according to the sort order
+        *** ProductId uniquely identifies the product on which the order is entered.
+        *** OrderId uniquely identifies the order.
+        *** BidOrOffer indicates whether the order is a bid or offer.
+        *** 1 indicated it's a bid
+        *** 2 indicated it's a offer
+        *** return 0 in case of any error.   
+        *************************************************************************************************/
+        
+	virtual int OnOrderAdd(char *ProductId, char * OrderId, int BidOrOffer, int Price ) = 0;
+	virtual int OnOrderDel(char *ProductId, char *OrderId)=0;
+	virtual int Print()=0;
+};
+
+class StockPrices : public MarketPrices
+{
+public:
+	virtual int OnOrderAdd(char *ProductId, char * OrderId, int BidOrOffer, int Price);
+	virtual int OnOrderDel(char *ProductId, char *OrderId);
+	int Print();
+private:
+	std::map<std::string, OrderBook> m_mOrderBook;
+};
+
+
+int StockPrices::OnOrderAdd(char *ProductId, char * OrderId, int BidOrOffer, int Price)
+{
+	if(!ProductId || !OrderId)
+	return 0;
+
+	std::map<std::string, OrderBook>::iterator ite = m_mOrderBook.find(ProductId);
+
+	if(ite != m_mOrderBook.end() )
+	{
+		OrderBook & orderbook = ite->second;
+		bidorder obj;
+		obj.price = Price;
+		obj.sbidorder = OrderId;
+		if( BidOrOffer == 1)
+		{
+			return orderbook.AddBids(obj);
+		}
+		else
+		{
+			return 0;
+		}
+	}
+}
+
+int StockPrices::OnOrderDel(char *ProductId, char *OrderId)
+{
+}
+
+int StockPrices::Print()
+{
+}
+
+
+int main()
+{
+return 0;
+}
