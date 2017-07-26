@@ -37,6 +37,8 @@ int main()
         typedef test * P; 
         P *t = new P[10];
 
+        test **t1 = new test *[10];
+
         //test **t1 = new (test *) test[10];
 
 	//int arr[] = {4,4,4,4,4,5,1,4,3,4,5,4,3,4,5,5,4,4,4,4,4};
