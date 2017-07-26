@@ -21,13 +21,35 @@ int find_max_repetition(int arr[], int n)
 
 }
 
+class test
+{
+public:
+test(int i) : data(i)
+{}
+private:
+int data;
+};
 
 
 
 int main()
 {
+        typedef test * P; 
+        P *t = new P[10];
 
-	int arr[] = {4,4,4,4,4,5,1,4,3,4,5,4,3,4,5,5,4,4,4,4,4};
+        //test **t1 = new (test *) test[10];
+
+	//int arr[] = {4,4,4,4,4,5,1,4,3,4,5,4,3,4,5,5,4,4,4,4,4};
+
+        void *rawMemory = operator new[](10*sizeof(test));
+
+        test *t2 = static_cast<test *>(rawMemory);
+
+        for(int i = 0 ; i<10; i++)
+         new (&t2[i]) test(i) ;        
+
+ 
+	int arr[] = {5,5,1,4,5,5,5,1};
 
 	int size = sizeof(arr)/sizeof(arr[0]) ;
 
