@@ -15,6 +15,7 @@ public:
 	void InsertAtBeg(int data);
 	void InsertAtLast(int data);
 	void TraverseList();
+        void ReverseList();
 
 };
 
@@ -55,7 +56,20 @@ void LinkedList::TraverseList()
 	}
 }
 
-
+void LinkedList::ReverseList()
+{
+	Node *prev = NULL;
+	Node *curr = Head;
+	Node *nex = NULL;
+	while(curr != NULL)
+	{
+		nex = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = nex;
+	}
+	Head = prev;
+}
 
 int main()
 {
@@ -67,5 +81,9 @@ int main()
         ll.InsertAtLast(50);
         ll.InsertAtBeg(98);
         ll.TraverseList();
+        ll.ReverseList();
+        std::cout<<" Linked list after reversing is : "<<std::endl;
+        ll.TraverseList();
+
 	return 0;
 }
