@@ -1,0 +1,47 @@
+\hypertarget{classOrderBook}{}\section{Order\+Book Class Reference}
+\label{classOrderBook}\index{Order\+Book@{Order\+Book}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries Add\+Bids} (\hyperlink{structbidorder}{bidorder} bid)\hypertarget{classOrderBook_a7c7230f821d4cd18b6b7c809ec21e0a7}{}\label{classOrderBook_a7c7230f821d4cd18b6b7c809ec21e0a7}
+
+\item 
+bool {\bfseries Add\+Order} (\hyperlink{structbidorder}{bidorder} order)\hypertarget{classOrderBook_a88466bcea74c0152835325d59ae80846}{}\label{classOrderBook_a88466bcea74c0152835325d59ae80846}
+
+\item 
+bool {\bfseries delete\+Order} (std\+::string \hyperlink{structbidorder}{bidorder})\hypertarget{classOrderBook_ab7daea398fbcbde673f55de017d0c110}{}\label{classOrderBook_ab7daea398fbcbde673f55de017d0c110}
+
+\item 
+int {\bfseries Get\+Order\+Book\+Size} ()\hypertarget{classOrderBook_a4cfafb8016e8c9ab3729afc8d07a5964}{}\label{classOrderBook_a4cfafb8016e8c9ab3729afc8d07a5964}
+
+\item 
+int {\bfseries Get\+Order\+Size} ()\hypertarget{classOrderBook_a543bde05403477fd92363e87b46121f7}{}\label{classOrderBook_a543bde05403477fd92363e87b46121f7}
+
+\item 
+int {\bfseries Get\+Bid\+Size} ()\hypertarget{classOrderBook_af2ff87414ce6d6be83da6de8e69580f7}{}\label{classOrderBook_af2ff87414ce6d6be83da6de8e69580f7}
+
+\item 
+void {\bfseries print\+Bids} (std\+::string sproduct)\hypertarget{classOrderBook_add4580b31619361e905876be1ea8355a}{}\label{classOrderBook_add4580b31619361e905876be1ea8355a}
+
+\item 
+void {\bfseries print\+Orders} (std\+::string sproduct)\hypertarget{classOrderBook_a765227b7d01d1810cc7c0f84c0d9695a}{}\label{classOrderBook_a765227b7d01d1810cc7c0f84c0d9695a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::multiset$<$ \hyperlink{structbidorder}{bidorder}, \hyperlink{structcompareorder}{compareorder} $>$ {\bfseries m\+\_\+v\+Orders}\hypertarget{classOrderBook_a358e442ed8f1a624980ad94d92da0b60}{}\label{classOrderBook_a358e442ed8f1a624980ad94d92da0b60}
+
+\item 
+std\+::multiset$<$ \hyperlink{structbidorder}{bidorder}, \hyperlink{structcomparebid}{comparebid} $>$ {\bfseries m\+\_\+v\+Bids}\hypertarget{classOrderBook_ac92dd0de80ccf38ae1886722b42d88cc}{}\label{classOrderBook_ac92dd0de80ccf38ae1886722b42d88cc}
+
+\item 
+std\+::map$<$ std\+::string, int $>$ {\bfseries m\+\_\+m\+All\+Orders}\hypertarget{classOrderBook_a8b4360d22e9208f5d2ce6195495044ad}{}\label{classOrderBook_a8b4360d22e9208f5d2ce6195495044ad}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Market\+Price.\+h\item 
+Market\+Price.\+cpp\end{DoxyCompactItemize}

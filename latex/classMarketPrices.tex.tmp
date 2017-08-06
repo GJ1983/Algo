@@ -1,0 +1,23 @@
+\hypertarget{classMarketPrices}{}\section{Market\+Prices Class Reference}
+\label{classMarketPrices}\index{Market\+Prices@{Market\+Prices}}
+
+
+Inheritance diagram for Market\+Prices\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int {\bfseries On\+Order\+Add} (char $\ast$Product\+Id, char $\ast$Order\+Id, int Bid\+Or\+Offer, int Price)=0\hypertarget{classMarketPrices_a3fc6883945a45e42827c90dd606360cb}{}\label{classMarketPrices_a3fc6883945a45e42827c90dd606360cb}
+
+\item 
+virtual int {\bfseries On\+Order\+Del} (char $\ast$Product\+Id, char $\ast$Order\+Id)=0\hypertarget{classMarketPrices_ac394ae30811779f4f0ab60a9ee767f77}{}\label{classMarketPrices_ac394ae30811779f4f0ab60a9ee767f77}
+
+\item 
+virtual int {\bfseries Print} ()=0\hypertarget{classMarketPrices_a8dcdfee51201f5f49ea0fdd5a64b3619}{}\label{classMarketPrices_a8dcdfee51201f5f49ea0fdd5a64b3619}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Market\+Price.\+h\end{DoxyCompactItemize}
