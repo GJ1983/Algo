@@ -20,7 +20,9 @@ void function_1()
 		std::unique_lock<std::mutex> locker(mu);
 		deq.push_front(count);
 		locker.unlock();
-                cond.notify_one();
+
+                cond.notify_one();    // Notify 
+
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		count--;
 	}
@@ -35,8 +37,10 @@ void function_2()
 		std::unique_lock<std::mutex> locker(mu);
 		//if(!deq.empty() )    //// busy waiting, to avoid this we need condition variable
 		//{
+
                  cond.wait(locker);  // spurious wake, if thread wake by itself and if condition is not satisfied
                  cond.wait(locker, [](){ return !deq.empty() ;});  // by using this lambda expression we are preventing spurious wake
+
 			data = deq.back();
 			deq.pop_back();
 			locker.unlock();

@@ -1,0 +1,3 @@
+valgrind --leak-check=yes ./a.out
+g++ -g -std=c++11 logic_Const.cpp -lpthread
+valgrind --leak-check=full --show-leak-kinds=all ./a.out
