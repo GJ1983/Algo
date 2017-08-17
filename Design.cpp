@@ -16,11 +16,10 @@ public:
 	{
 		if(instance == NULL) 
 		{
-			mtx.lock();
+			std::lock_guard<std::mutex> lg(mtx);
 			if(instance == NULL)
 			{
 				instance = new Singleton();
-				mtx.unlock();
 			}
 		 }
                 
@@ -34,5 +33,6 @@ Singleton * Singleton::instance = NULL;
 int main()
 {
 	Singleton *single = Singleton::getInstance();
+	Singleton *single1 = Singleton::getInstance();
 	return 0;
 }

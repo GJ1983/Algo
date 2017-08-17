@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/gopal-joshi/Programs/C++
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named F_Network
-
-# Build rule for target.
-F_Network: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 F_Network
-.PHONY : F_Network
-
-# fast build rule for target.
-F_Network/fast:
-	$(MAKE) -f CMakeFiles/F_Network.dir/build.make CMakeFiles/F_Network.dir/build
-.PHONY : F_Network/fast
-
-#=============================================================================
 # Target rules for targets named MarketPrice
 
 # Build rule for target.
@@ -137,30 +124,17 @@ MarketPrice/fast:
 .PHONY : MarketPrice/fast
 
 #=============================================================================
-# Target rules for targets named Linked_list
+# Target rules for targets named F_Network
 
 # Build rule for target.
-Linked_list: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Linked_list
-.PHONY : Linked_list
+F_Network: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 F_Network
+.PHONY : F_Network
 
 # fast build rule for target.
-Linked_list/fast:
-	$(MAKE) -f CMakeFiles/Linked_list.dir/build.make CMakeFiles/Linked_list.dir/build
-.PHONY : Linked_list/fast
-
-#=============================================================================
-# Target rules for targets named array_union
-
-# Build rule for target.
-array_union: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 array_union
-.PHONY : array_union
-
-# fast build rule for target.
-array_union/fast:
-	$(MAKE) -f CMakeFiles/array_union.dir/build.make CMakeFiles/array_union.dir/build
-.PHONY : array_union/fast
+F_Network/fast:
+	$(MAKE) -f CMakeFiles/F_Network.dir/build.make CMakeFiles/F_Network.dir/build
+.PHONY : F_Network/fast
 
 F_Network.o: F_Network.cpp.o
 
@@ -189,33 +163,6 @@ F_Network.cpp.s:
 	$(MAKE) -f CMakeFiles/F_Network.dir/build.make CMakeFiles/F_Network.dir/F_Network.cpp.s
 .PHONY : F_Network.cpp.s
 
-Linked_list.o: Linked_list.cpp.o
-
-.PHONY : Linked_list.o
-
-# target to build an object file
-Linked_list.cpp.o:
-	$(MAKE) -f CMakeFiles/Linked_list.dir/build.make CMakeFiles/Linked_list.dir/Linked_list.cpp.o
-.PHONY : Linked_list.cpp.o
-
-Linked_list.i: Linked_list.cpp.i
-
-.PHONY : Linked_list.i
-
-# target to preprocess a source file
-Linked_list.cpp.i:
-	$(MAKE) -f CMakeFiles/Linked_list.dir/build.make CMakeFiles/Linked_list.dir/Linked_list.cpp.i
-.PHONY : Linked_list.cpp.i
-
-Linked_list.s: Linked_list.cpp.s
-
-.PHONY : Linked_list.s
-
-# target to generate assembly for a file
-Linked_list.cpp.s:
-	$(MAKE) -f CMakeFiles/Linked_list.dir/build.make CMakeFiles/Linked_list.dir/Linked_list.cpp.s
-.PHONY : Linked_list.cpp.s
-
 MarketPrice.o: MarketPrice.cpp.o
 
 .PHONY : MarketPrice.o
@@ -243,57 +190,22 @@ MarketPrice.cpp.s:
 	$(MAKE) -f CMakeFiles/MarketPrice.dir/build.make CMakeFiles/MarketPrice.dir/MarketPrice.cpp.s
 .PHONY : MarketPrice.cpp.s
 
-array_union.o: array_union.cpp.o
-
-.PHONY : array_union.o
-
-# target to build an object file
-array_union.cpp.o:
-	$(MAKE) -f CMakeFiles/array_union.dir/build.make CMakeFiles/array_union.dir/array_union.cpp.o
-.PHONY : array_union.cpp.o
-
-array_union.i: array_union.cpp.i
-
-.PHONY : array_union.i
-
-# target to preprocess a source file
-array_union.cpp.i:
-	$(MAKE) -f CMakeFiles/array_union.dir/build.make CMakeFiles/array_union.dir/array_union.cpp.i
-.PHONY : array_union.cpp.i
-
-array_union.s: array_union.cpp.s
-
-.PHONY : array_union.s
-
-# target to generate assembly for a file
-array_union.cpp.s:
-	$(MAKE) -f CMakeFiles/array_union.dir/build.make CMakeFiles/array_union.dir/array_union.cpp.s
-.PHONY : array_union.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... F_Network"
+	@echo "... rebuild_cache"
 	@echo "... MarketPrice"
-	@echo "... Linked_list"
-	@echo "... array_union"
+	@echo "... F_Network"
 	@echo "... F_Network.o"
 	@echo "... F_Network.i"
 	@echo "... F_Network.s"
-	@echo "... Linked_list.o"
-	@echo "... Linked_list.i"
-	@echo "... Linked_list.s"
 	@echo "... MarketPrice.o"
 	@echo "... MarketPrice.i"
 	@echo "... MarketPrice.s"
-	@echo "... array_union.o"
-	@echo "... array_union.i"
-	@echo "... array_union.s"
 .PHONY : help
 
 

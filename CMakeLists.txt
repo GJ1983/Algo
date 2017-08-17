@@ -10,5 +10,5 @@ include_directories("${PROJECT_SOURCE_DIR}")
 
 add_executable(F_Network ${PROJECT_SOURCE_DIR}/F_Network.cpp)
 add_executable(MarketPrice ${PROJECT_SOURCE_DIR}/MarketPrice.cpp)
-add_executable(Linked_list ${PROJECT_SOURCE_DIR}/Linked_list.cpp)
-add_executable(array_union ${PROJECT_SOURCE_DIR}/array_union.cpp)
+#add_executable(Linked_list ${PROJECT_SOURCE_DIR}/Linked_list.cpp)
+#add_executable(array_union ${PROJECT_SOURCE_DIR}/array_union.cpp)

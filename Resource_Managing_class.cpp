@@ -3,20 +3,23 @@
 
 class Person
 {
-	std::string *m_name;
+	//std::string *m_name;
+	std::string m_name;
 public:
 	Person(){}
 	Person(std::string name)
 	{
-		m_name = new std::string(name);
+		//m_name = new std::string(name);
+		m_name = name;
 	}
 	void printName()
 	{
-		std::cout<<*m_name<<std::endl;
+		//std::cout<<*m_name<<std::endl;
+		std::cout<<m_name<<std::endl;
 	}
 	~Person()
 	{
-		delete m_name;
+		//delete m_name;
 	}
 };
 

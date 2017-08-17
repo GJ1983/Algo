@@ -49,6 +49,7 @@ int main()
 	std::shared_ptr<test> p1 = std::make_shared<test>("Testing");  // This is the better way than p0, in p0 there are 2 calls 1: to creat test object 2. to create shared pointer out of itthere may be chances that creattion of test object is succedded but share_ptr failed
 
 	std::shared_ptr<test> p2 = std::shared_ptr<test>(new test("Smart"), [](test *p) {std::cout<<"custom deleter.. "<<std::endl; delete p;});
+	//std::shared_ptr<test> p2 = std::shared_ptr<test>(new test("Smart"), [](auto *p) {std::cout<<"custom deleter.. "<<std::endl; delete p;});   //will compile with c++14
 
 	//std::shared_ptr<test> p3( new test[3]);  // This line can lead to memory leak, here we need customer deleter, otherwise shared pointer will just delete memory for test[0]
 
@@ -88,3 +89,36 @@ int main()
  
 	return 0;
 }
+
+
+// Auto pointer implementation
+
+template<class T>
+class auto_ptr
+{
+public:
+	auto_ptr<T> & operator=(auto_ptr<T> &rhs);
+	auto_ptr(const auto_ptr<T> &rhs);
+private:
+	T *pointee;
+};
+
+template<class T>
+auto_ptr<T> & auto_ptr<T>::operator=(auto_ptr<T> &rhs)
+{
+	if(this == &rhs)
+		return *this;
+
+	delete pointee;
+	pointee = rhs.pointee;
+	rhs.pointee = 0;
+	return *this;
+}
+
+template<class T>
+auto_ptr<T>::auto_ptr(const auto_ptr<T> &rhs)
+{
+	pointee = rhs.pointee;
+	rhs.pointee = 0;
+}
+
