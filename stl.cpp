@@ -5,14 +5,36 @@
 #include<string>
 #include<list>
 #include<algorithm>
+#include<unordered_set>
+#include<set>
 
-//struct cmpbyStringLength
-//{
-//	bool operator() (const std::string &a, const std::string &b ) const
-//	{
-//		return a.length() < b.length();
-//	}
-//};
+/*
+ *  1. Frequent push_front() :- Deque
+ *  2. Built in data-types   :- Vector
+ *  3. Not Built in types    :- Deque
+ *  4. Contiguos memory      :- Deque
+ *  5. Unpredicatable growth :- Deque
+ *  6. Pointer integreity    :- Deque
+ *  7. Frequently passed to C:- Vector
+ */ 
+
+
+
+/*Removing items from the STL containers
+ *  1. Vector and Deque           ===>  Always use standard function remove followed by standard function erase()
+ *  2. List                       ===>  Always use list member function remove, as it remove items more efficently
+ *  3. Associative and Unoordered ===>  Always use member function erase to remove items 
+ */
+
+
+/*struct cmpbyStringLength
+ * {
+ *	bool operator() (const std::string &a, const std::string &b ) const
+ *	{
+ *		return a.length() < b.length();
+ *	}
+ * };
+ */
 
 class cmpbyStringLength
 {
@@ -23,9 +45,28 @@ public:
 	}
 };
 
+void RemovingFromMultiset()
+{
+	std::multiset<int> m  =  {1,3,5,1,6,4,1,8,1,9,2,1};
+
+	for(std::multiset<int>::iterator ii = m.begin(); ii != m.end(); )
+	{
+		if(*ii == 1)
+		{
+			m.erase(ii++);
+			std::cout<<" One item earsed from multiset: "<<*ii<<std::endl;
+		}
+		else
+		{
+			ii++;
+		}
+	}
+}
+
 
 int main()
 {
+        RemovingFromMultiset();
 	std::string arr[]  = {"test","c","modern","network" };
 	std::vector<std::string> vecofstrings(arr, arr+sizeof(arr)/sizeof(std::string)) ;
 
@@ -116,6 +157,8 @@ int main()
 	std::cout<<" s5 is : "<< s5 <<std::endl;
 	std::string s6(5,'a');
 	std::cout<<" s6 is : "<< s6<<std::endl;
+
+        std::unordered_set<int> un = {4,7,8,2,9,1};
 
 	return 0;
 }

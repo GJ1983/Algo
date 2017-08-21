@@ -56,7 +56,7 @@ protected:
 class Derived : public base
 {
 public:
-	using base::PrintMsg;  // To make line 33 compile, we need to add this here
+	using base::PrintMsg;  // To make line 316 compile, we need to add this here
 	virtual void PrintMsg(std::string msg = " Derived version")
 	{
 		std::cout<<" Printing from "<<msg<<std::endl;
@@ -257,6 +257,19 @@ int main()
         //py->bark1();  // This line will fail, because it is accessing member of the yellow dog class
 	std::cout<<" pd is :  "<<pd<<std::endl;
 	std::cout<<" py is :  "<<py<<std::endl;
+
+
+        //float *fst = static_cast<float *>(tst);    // this will fail as static_cast only cast pointers/references of related type , means in inheritance hierarchy
+
+	py = static_cast<YellowDog *>(pd);  
+ 
+         if(py)
+         {
+		 std::cout<<" Although the object was null after dynamic_cast, but it's a valid object after static_cast: "<<std::endl;
+         }
+
+	long pp = 10009998;
+	Dog *dd = reinterpret_cast<Dog *>(pp);
 
 
 	//test_const t;
