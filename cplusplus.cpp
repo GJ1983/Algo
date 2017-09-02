@@ -101,17 +101,17 @@ public:
 	class Array1D
 	{
 	private:
-		int *data;
+		int data[10];
 	public:
 		Array1D()
 		{
-			data = new int;
-                        for(int i = 0; i<=10; i++)
+			//data = new int;
+                        for(int i = 0; i<10; i++)
 			{
 				data[i] = i;
 			}
 		}
-		int operator[](int index)
+		int& operator[](int index)
 		{
 			return data[index];
 		}
@@ -142,12 +142,15 @@ class BigTable
 	std::vector<int> v;
 	///int accessCounter;
 	//mutable int accessCounter;
+        int a;
+        int *arr;
 public:
 	int getItem(int index) const
 	{
                 // two solutions to modify values from const function
                 //const_cast<BigTable *>(this)->accessCounter++;
 		//accessCounter++;
+                arr[index] = index;
 		return v[index];
 	}
 
@@ -277,9 +280,9 @@ int main()
 	const int x11 = 50;
 
 	BigTable b;
-	const BigTable b1;
+	//const BigTable b1;
 	b.fun();
-	b1.fun();
+	//b1.fun();
 
         b.fun_ref(ij);
         b.fun_ref(x11);
@@ -298,11 +301,11 @@ int main()
 	std::cout<<a2[9][9]<<std::endl;
 	std::cout<<a2[9][19]<<std::endl;
 
-        for(int i = 0; i<=10; i++)
+        for(int i = 0; i<10; i++)
         {
 		for(int j = 0; j<10; j++)
 		{
-			//std::cout<<a2[i][j]<<", ";
+			std::cout<<a2[i][j]<<", ";
 		}
 		std::cout<<std::endl;
 	}
