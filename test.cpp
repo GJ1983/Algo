@@ -5,12 +5,37 @@
 class Base
 {
 public:
-virtual ~Base() = 0;
+	virtual void fun()
+	{
+		std::cout<<" From Base .."<<std::endl;
+	}
 };
 
 //class Derived : public Base
 //{
 //};
+class Derived : public Base
+{
+public:
+	virtual void fun()
+	{
+		std::cout<<" From Base .."<<std::endl;
+	}
+};
+
+
+struct TestConst
+{
+	TestConst()
+	{
+		std::cout<<" Inside struct constructor "<<std::endl;
+	}
+	~TestConst()
+	{
+		std::cout<<" Inside destructor .. "<<std::endl;
+	}
+
+};
 
 
 
@@ -69,12 +94,20 @@ std::cout<<" Main started "<<std::endl;
 //if(a)
 //main();
 int *tt;
-Base *p;
+Base *pp = new Derived();
+
+std::cout<<" Size of Base .."<<sizeof(Base)<<std::endl;
+std::cout<<" Size of Derived .."<<sizeof(Derived)<<std::endl;
+
+TestConst *tc = new TestConst();
+
+TestConst ttc;
 
 //p = static_cast<Base *>(tt);
-p = reinterpret_cast<Base *>(tt);
+//p = reinterpret_cast<Base *>(tt);
 
 String s1(" Reference Counting string.");
 String s2 = s1;
+delete tc;
 return 0;
 }

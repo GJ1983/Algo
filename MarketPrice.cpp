@@ -24,7 +24,7 @@ bool OrderBook::AddBids(bidorder bid)
 bool OrderBook::AddOrder(bidorder bid)
 {
 	std::map<std::string, int>::iterator ite = m_mAllOrders.find(bid.sbidorder);
-	if(ite != m_mAllOrders.end() )
+	if(ite == m_mAllOrders.end() )
 	{
 		m_mAllOrders[bid.sbidorder] = bid.price;
 		m_vOrders.insert(bid);
